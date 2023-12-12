@@ -10,9 +10,11 @@ dotenv.config({
 connectDB()
   .then(() => {
     app.listen(PORT || 8000, () => {
-      console.log(`⚙️ Server is running at port : ${PORT}`);
+      console.log(`⚙️  Server is running at port : ${PORT}`);
     });
   })
   .catch(err => {
     console.log("Mongo DB Connection Error", err);
   });
+
+
