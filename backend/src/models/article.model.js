@@ -19,6 +19,8 @@ const articleSchema = Schema(
     },
     companyName: {
       type: String,
+      trim: true,
+      lowercase: true,
       required: true,
     },
     fullName: {

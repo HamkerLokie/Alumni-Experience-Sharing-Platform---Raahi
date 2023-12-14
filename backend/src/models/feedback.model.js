@@ -18,4 +18,4 @@ const feedbackSchema = Schema(
   { timestamps: true }
 );
 
-export const Article = mongoose.model("Feedback", feedbackSchema);
+export const Feedback = mongoose.model("Feedback", feedbackSchema);

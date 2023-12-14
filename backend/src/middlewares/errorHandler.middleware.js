@@ -10,6 +10,7 @@ const errHandler = (err, req, res, next) => {
       errors,
     });
   } else {
+    console.log(err)
     res.status(500).json({
       status: "error",
       statusCode: 500,

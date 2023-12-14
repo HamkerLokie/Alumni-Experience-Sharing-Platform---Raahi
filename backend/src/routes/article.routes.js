@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  getArticleByTags,
   getSingleArticle,
   postArticle,
 } from "../controllers/article.controller.js";
@@ -11,10 +12,13 @@ import {
 const router = Router();
 
 router.route("/post").post(postArticle);
-
-router.route("/:articleId").get(getSingleArticle);
+router.route("/tags").get(getArticleByTags);
 
 router.route("/request").post(requestArticle);
 router.route("/request/all").get(getAllRequest);
+
+router.route("/:articleId").get(getSingleArticle);
+
+
 
 export default router;

@@ -55,6 +55,7 @@ const getSingleArticle = asyncHandler(async (req, res) => {
     isVerified: true,
   });
 
+
   if (article.length === 0) {
     throw new ApiError(400, `No article with found !!`);
   }
@@ -62,4 +63,19 @@ const getSingleArticle = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, article, "Article Found!!"));
 });
 
-export { postArticle, getAllArticles, getSingleArticle };
+const getArticleByTags = asyncHandler(async (req, res) => {
+  const tag = req.body.tags;
+  const article = await Article.find({
+    $and: [{ isVerified: true }, { tags: { $in: tag } }],
+  });
+
+  if (!article || article.length === 0) {
+    throw new ApiError(400, `No article with found By Tags!!`);
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, article, "Article Found by Tags!!"));
+});
+
+export { postArticle, getAllArticles, getSingleArticle, getArticleByTags };
