@@ -1,8 +1,10 @@
 import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit'
 import fetchCompanies from '../store/slices/companySlice.ts'
+import fetchRecentArticles from '../store/slices/recentArticleSlice.ts'
 export const store = configureStore({
   reducer: {
-    comapnies: fetchCompanies
+    comapnies: fetchCompanies,
+    articles: fetchRecentArticles
   }
 })
 

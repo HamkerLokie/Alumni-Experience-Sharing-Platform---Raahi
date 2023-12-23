@@ -6,7 +6,7 @@ interface RecentArticleProps {
   title: string
   description: string
   name: string
-  date: string
+  date: Date
 }
 
 const RecentArticleCard: React.FC<RecentArticleProps> = ({
@@ -16,18 +16,19 @@ const RecentArticleCard: React.FC<RecentArticleProps> = ({
   name,
   date
 }) => {
-  const parseDate = (str: string) => {
+  const parseDate = (str: Date) => {
     let dt = new Date(str)
     return dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear()
   }
   return (
     <>
       <Link to={`/article/${id}`}>
-        <div className='article-card '>
+        <div className='article-card  shadow-sm'>
           <span className='title'>{title}</span>
           <span className='summary'>{description}</span>
           <div className='flex mt-2'>
             <span className='name'>by {name}</span>
+            {/* <span className='time'> {parseDate(date)}</span> */}
             <span className='time'> {parseDate(date)}</span>
           </div>
         </div>

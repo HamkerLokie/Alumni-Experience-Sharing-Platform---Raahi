@@ -55,7 +55,6 @@ const getSingleArticle = asyncHandler(async (req, res) => {
     isVerified: true,
   });
 
-
   if (article.length === 0) {
     throw new ApiError(400, `No article with found !!`);
   }

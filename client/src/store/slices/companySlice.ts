@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from '../../axios'
 
 interface Company {
@@ -20,7 +20,7 @@ const initialState: CompanySlice = {
 }
 
 const fetchCompaniesSlice = createSlice({
-  name: 'fetch_slice',
+  name: 'companies',
   initialState,
   reducers: {},
   extraReducers: builder => {
