@@ -26,9 +26,9 @@ const RecentArticleCard: React.FC<RecentArticleProps> = ({
         <div className='article-card  shadow-sm'>
           <span className='title'>{title}</span>
           <span className='summary'>{description}</span>
-          <div className='flex mt-2'>
-            <span className='name'>by {name}</span>
-            {/* <span className='time'> {parseDate(date)}</span> */}
+          <div className='flex mt-1'>
+            <span className='name font-[500]'>by {name}</span>
+
             <span className='time'> {parseDate(date)}</span>
           </div>
         </div>

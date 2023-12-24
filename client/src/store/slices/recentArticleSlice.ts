@@ -6,7 +6,7 @@ interface Article {
   title: string
   description: string
   createdAt:  Date
-  name: string
+  fullName: string
 }
 
 interface ArticleSlice {
@@ -27,8 +27,8 @@ const fetchRecentArticleSlice = createSlice({
   reducers: {
     sortByName: state => {
       state.data.sort((a, b) => {
-        const nameA = a.name.toUpperCase()
-        const nameB = b.name.toUpperCase()
+        const nameA = a.fullName.toUpperCase()
+        const nameB = b.fullName.toUpperCase()
         if (nameA < nameB) {
           return -1
         }
@@ -74,7 +74,6 @@ export const fetchRecentArticle = createAsyncThunk(
       console.log('recent article', response.data)
       return response.data
     } catch (error) {
-      console.log(error)
       return rejectWithValue('Failed to Fetch Recent Articles')
     }
   }

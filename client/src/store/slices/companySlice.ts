@@ -22,7 +22,14 @@ const initialState: CompanySlice = {
 const fetchCompaniesSlice = createSlice({
   name: 'companies',
   initialState,
-  reducers: {},
+  reducers: {
+    sortByCount: state => {
+      state.data.sort((a, b) => b.count - a.count)
+    },
+    sortByCompanyName: state => {
+      state.data.sort((a, b) => a.company.localeCompare(b.company));
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCompanies.pending, state => {
@@ -63,6 +70,6 @@ export const fetchCompanies = createAsyncThunk(
   }
 )
 
-export const {} = fetchCompaniesSlice.actions
+export const { sortByCount, sortByCompanyName } = fetchCompaniesSlice.actions
 
 export default fetchCompaniesSlice.reducer
