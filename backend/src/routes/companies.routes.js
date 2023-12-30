@@ -6,3 +6,6 @@ router.route("/getallcompanies").get(getAllCompanies);
 router.route("/:companyName").get(getCompanyArticles);
 
 export default router;
+
+
+

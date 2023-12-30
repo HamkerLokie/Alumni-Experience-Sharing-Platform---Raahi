@@ -5,7 +5,7 @@ interface Article {
   _id: string
   title: string
   description: string
-  createdAt:  Date
+  createdAt: Date
   fullName: string
 }
 
@@ -63,6 +63,28 @@ const fetchRecentArticleSlice = createSlice({
           ? action.payload.toString()
           : 'An error occurred'
       })
+      .addCase(fetchCompanyArticle.pending, state => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchCompanyArticle.fulfilled, (state, action) => {
+        const { statusCode, data, message, success } = action.payload
+
+        if (statusCode === 201 && success) {
+          state.loading = false
+          state.data = data
+          state.error = null
+        } else {
+          state.loading = false
+          state.error = message || 'An error occurred'
+        }
+      })
+      .addCase(fetchCompanyArticle.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+          ? action.payload.toString()
+          : 'An error occurred'
+      })
   }
 })
 
@@ -71,10 +93,21 @@ export const fetchRecentArticle = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get('/articles/all')
-      console.log('recent article', response.data)
       return response.data
     } catch (error) {
       return rejectWithValue('Failed to Fetch Recent Articles')
+    }
+  }
+)
+
+export const fetchCompanyArticle = createAsyncThunk(
+  'company_articles',
+  async (companyName, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/companies/${companyName}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue('Failed to Fetch Comapny Articles')
     }
   }
 )

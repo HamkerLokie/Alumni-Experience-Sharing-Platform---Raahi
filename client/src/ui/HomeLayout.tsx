@@ -29,7 +29,7 @@ function ListComponent<T> ({
         <div className='w-full'>
           {buttons.map(button => (
             <button
-              className='bg-pri rounded px-2 shadow-xl mb-1 text-white'
+              className='bg-pri rounded px-2 shadow-xl mt-0 text-white m-1'
               key={button.label}
               onClick={button.onClick}
             >

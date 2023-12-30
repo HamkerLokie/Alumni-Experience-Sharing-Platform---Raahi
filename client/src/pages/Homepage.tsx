@@ -9,8 +9,6 @@ const Homepage = () => {
         <Companies />
         <div className='flex justify-center w-2/5 pt-2 items-center'>
           <Carousel />
-
-
         </div>
         <RecentArticles />
       </div>

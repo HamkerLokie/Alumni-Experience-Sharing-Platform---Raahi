@@ -27,7 +27,7 @@ const fetchCompaniesSlice = createSlice({
       state.data.sort((a, b) => b.count - a.count)
     },
     sortByCompanyName: state => {
-      state.data.sort((a, b) => a.company.localeCompare(b.company));
+      state.data.sort((a, b) => a.company.localeCompare(b.company))
     }
   },
   extraReducers: builder => {
@@ -37,7 +37,6 @@ const fetchCompaniesSlice = createSlice({
         state.error = null
       })
       .addCase(fetchCompanies.fulfilled, (state, action) => {
-        console.log('action', action.payload)
         const { statusCode, data, message, success } = action.payload
         if (statusCode === 200 && success) {
           state.loading = false
@@ -64,7 +63,6 @@ export const fetchCompanies = createAsyncThunk(
       const response = await axios.get('/companies/getallcompanies')
       return response.data
     } catch (error) {
-      console.log(error)
       return rejectWithValue('Failed to fetch Comapnies')
     }
   }

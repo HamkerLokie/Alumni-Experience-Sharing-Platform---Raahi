@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
+const withMT = require('@material-tailwind/react/utils/withMT')
 
 export default withMT({
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -42,5 +42,9 @@ export default withMT({
       }
     }
   },
-  plugins: [require('flowbite/plugin')]
+  plugins: [
+    require('postcss-import'),
+    require('tailwindcss/nesting'), // Move the nesting plugin here
+    require('flowbite/plugin'),
+  ],
 })
