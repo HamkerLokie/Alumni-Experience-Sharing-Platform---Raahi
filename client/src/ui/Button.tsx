@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface ButtonProps {
-  classes: string
-  text: string
+  classes?: string
+  text?: string
   handleFunction?: () => void
 }
 
