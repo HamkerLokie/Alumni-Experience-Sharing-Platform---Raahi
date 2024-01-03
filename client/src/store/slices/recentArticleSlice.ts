@@ -37,6 +37,9 @@ const fetchRecentArticleSlice = createSlice({
         }
         return 0
       })
+    },
+    sortByDate :state => {
+      // state.data = initialState
     }
   },
   extraReducers: builder => {
@@ -112,6 +115,6 @@ export const fetchCompanyArticle = createAsyncThunk(
   }
 )
 
-export const { sortByName } = fetchRecentArticleSlice.actions
+export const { sortByName, sortByDate } = fetchRecentArticleSlice.actions
 
 export default fetchRecentArticleSlice.reducer

@@ -9,7 +9,7 @@ interface InputProps {
 const FormInput: React.FC<InputProps> = ({ type, placeholder, classes }) => {
   return (
     <div>
-      <input type={type} placeholder={placeholder} className={`outline-none border-0 rounded-md p-input w-full  ${classes}`} />
+      <input type={type} placeholder={placeholder} className={`outline-none border-2 border-pri rounded-md p-input w-full  ${classes}`} />
     </div>
   )
 }

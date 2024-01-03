@@ -2,15 +2,6 @@ import mongoose, { Schema } from "mongoose";
 import validator from "validator";
 import { ValidationMiddleware } from "../middlewares/validation.middleware.js";
 
-const validTags = [
-  "interview-experience",
-  "off-campus",
-  "on-campus",
-  "mnc",
-  "startup",
-  "SDE1",
-];
-
 const articleSchema = Schema(
   {
     title: {
@@ -55,12 +46,7 @@ const articleSchema = Schema(
       default: true,
     },
     tags: {
-      type: [
-        {
-          type: String,
-          enum: validTags,
-        },
-      ],
+      type: [String],
       required: true,
     },
   },

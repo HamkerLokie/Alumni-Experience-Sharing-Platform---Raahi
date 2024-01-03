@@ -10,7 +10,7 @@ body::-webkit-scrollbar {
 }
 
 main {
-  min-height: calc(100vh - 12vh);
+  min-height: calc(100vh - 10vh);
 }
 
 
@@ -41,13 +41,20 @@ main {
   background: transparent;
 }
 
+nav{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.com-tag{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
 
 
 
 /* recent article box */
 .article-card {
-
   width: 300px;
   height: 142px;
   background: #FFFFFF;
@@ -55,6 +62,8 @@ main {
   padding: 12px 14px;
   margin: 5px 0px;
   position: relative;
+  border: 2px solid #0092f8;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 
   &:hover {
@@ -164,8 +173,17 @@ main {
   border: 0;
   padding: .6rem;
   border-radius: 5px;
+  border: 2px solid #0092f8;
 }
 
+.tags-input input{
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  border: 2px solid #0092f8;
+  width: 100%;
+
+}
 
 .tags-input {
   align-items: flex-start;
@@ -174,25 +192,14 @@ main {
   width: 100%;
   padding: 0 8px;
   border-radius: 6px;
-
-  input {
-    flex: 1;
-    border: none;
-    height: 46px;
-    font-size: 14px;
-    padding: 4px 0 0 4px;
-
-    &:focus {
-      outline: transparent;
-    }
-  }
+ 
 }
 
 #tags {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin: 8px 0 0 0;
+  /* margin: 8px 0 0 0; */
 }
 
 .tag {
@@ -232,4 +239,9 @@ main {
   .tags-input {
     width: calc(100vw - 32px);
   }
+}
+
+
+.nav{
+  background-color: #d7ebf8;
 }

@@ -6,11 +6,11 @@ export default withMT({
   theme: {
     extend: {
       colors: {
-        pri: '#484b6a',
-        sec: '#9394a5',
-        ter: '#d2d3db',
-        light: '#e4e5f1',
-        gray: '#fafafa'
+        pri: '#5588ac',
+        sec: '#96DFCE',
+        ter: '#fff',
+        light: '#d3eafa',
+        gray: '#0092f8'
       },
       fontFamily: {
         prompt: ['Prompt', 'sans-serif'],

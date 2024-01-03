@@ -2,7 +2,7 @@ import React from 'react'
 
 interface ButtonProps {
   classes?: string
-  text?: string
+  text?: string | React.ReactNode
   handleFunction?: () => void
 }
 

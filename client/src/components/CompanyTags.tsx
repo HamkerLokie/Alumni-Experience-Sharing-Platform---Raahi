@@ -10,10 +10,10 @@ interface CompanyTagsProps {
 const CompanyTags: React.FC<CompanyTagsProps> = ({ count, company, img }) => {
   return (
     <>
-      <div className='w-[70%] flex flex-col items-center'>
+      <div className='w-[70%]  flex flex-col items-center'>
         <Link
           to={`/interview/${company}`}
-          className='bg-light rounded-full p-pad w-[90%] px-3 flex justify-between items-center my-1'
+          className='com-tag bg-gray text-white  rounded-full p-pad w-[90%] px-3 flex justify-between items-center my-1 '
         >
           <div className='flex items-center  w-full'>
             <img
@@ -25,7 +25,7 @@ const CompanyTags: React.FC<CompanyTagsProps> = ({ count, company, img }) => {
               {company.charAt(0).toUpperCase() + company.slice(1)}
             </div>
           </div>
-          <span className='col-span-1 text-sm bg-black text-white px-2 text-center font-prompt rounded-full'>
+          <span className='col-span-1 text-sm bg-white text-black px-2 text-center font-prompt rounded-full'>
             {count}
           </span>
         </Link>

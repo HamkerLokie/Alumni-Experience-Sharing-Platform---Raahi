@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import  { Fragment } from 'react'
 import FormInput from '../ui/FormInput'
 import Button from '../ui/Button'
 
@@ -10,7 +10,7 @@ const RequestArticle = () => {
       </h1>
       <br />
       <div className='bg-ter flex flex-col flex-wrap items-center justify-center'>
-        <div className=' flex flex-col flex-wrap '>
+        <div className=' flex flex-col flex-wrap p-pad'>
           <h3 className='text-2xl font-extrabold text-pri'>
             Basic Information
           </h3>
@@ -41,7 +41,7 @@ const RequestArticle = () => {
 
           <h3 className='text-2xl font-extrabold text-pri'>Personal Note</h3>
           <textarea
-            className='outline-none border-0 rounded-sm w-full'
+            className='outline-none rounded-sm w-full border-2 border-pri '
             placeholder='Enter your personal note(optional)'
           />
           <Button text='Send Request' classes='bg-pri w-1/4 mt-2 text-white' />

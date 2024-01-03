@@ -4,6 +4,7 @@ import Homepage from './pages/Homepage'
 import ArticlesCompany from './pages/ArticlesCompany'
 import WriteArticle from './pages/WriteArticle'
 import RequestArticle from './pages/RequestArticle'
+import Guidelines from './pages/Guidelines'
 
 function App () {
   return (
@@ -16,6 +17,7 @@ function App () {
           <Route path='/interview/:companyName' element={<ArticlesCompany />} />
           <Route path='/article/write' element={<WriteArticle />} />
           <Route path='/article/request' element={<RequestArticle />} />
+          <Route path='/article/guidelines' element={<Guidelines />} />
         </Routes>
       </main>
     </>
