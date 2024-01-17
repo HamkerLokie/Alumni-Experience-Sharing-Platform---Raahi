@@ -41,9 +41,9 @@ main {
   background: transparent;
 }
 
-nav{
+/* nav{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+} */
 
 
 .com-tag{
@@ -242,6 +242,13 @@ nav{
 }
 
 
-.nav{
+/* .nav{
   background-color: #d7ebf8;
+} */
+
+
+input, textarea{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+
 }
+

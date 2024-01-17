@@ -5,9 +5,8 @@ import axios from "axios";
 import { ApiError } from "../utils/ApiError.js";
 
 const postArticle = asyncHandler(async (req, res) => {
-  const { title, companyName, fullName, showName } = req.query;
 
-  const { description, tags, email } = req.body;
+  const {title, companyName, fullName, showName , description, tags, email } = req.body;
 
   const response = await axios.get(
     `https://autocomplete.clearbit.com/v1/companies/suggest?query=${companyName}`

@@ -38,8 +38,19 @@ const fetchRecentArticleSlice = createSlice({
         return 0
       })
     },
-    sortByDate :state => {
+    sortByDate: state => {
       // state.data = initialState
+      state.data.sort((a, b) => {
+        const date1 = a.createdAt
+        const date2 = b.createdAt
+        if (date1 < date2) {
+          return -1
+        }
+        if (date1 > date2) {
+          return -1
+        }
+        return 0
+      })
     }
   },
   extraReducers: builder => {

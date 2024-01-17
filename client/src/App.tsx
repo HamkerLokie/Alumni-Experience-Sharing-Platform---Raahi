@@ -5,11 +5,14 @@ import ArticlesCompany from './pages/ArticlesCompany'
 import WriteArticle from './pages/WriteArticle'
 import RequestArticle from './pages/RequestArticle'
 import Guidelines from './pages/Guidelines'
+import toastOptions from './ui/toastOptions'
+import { Toaster } from 'react-hot-toast'
 
 function App () {
   return (
     <>
       <Navbar />
+      <Toaster position='top-center' toastOptions={toastOptions}></Toaster>
 
       <main className='bg-ter'>
         <Routes>

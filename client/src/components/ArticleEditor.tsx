@@ -1,8 +1,8 @@
-import { Fragment, useState, FC } from 'react'
+import { useState, FC } from 'react'
 import { EditorState, convertToRaw } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
-import { Editor } from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 interface EditorProps {
   handleInputChange: (x: string) => void
@@ -18,7 +18,6 @@ const ArticleEditor: FC<EditorProps> = ({ handleInputChange }) => {
     handleInputChange(x)
   }
   return (
-    <Fragment>
       <Editor
         editorState={editorState}
         onEditorStateChange={changeEditorInput}
@@ -27,7 +26,6 @@ const ArticleEditor: FC<EditorProps> = ({ handleInputChange }) => {
         toolbarClassName='toolbar-class'
         placeholder='Write here.....'
       />
-    </Fragment>
   )
 }
 

@@ -4,8 +4,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/asynHandler.js";
 
 const requestArticle = asyncHandler(async (req, res) => {
-  const { fullName, seniorName, companyName } = req.query;
-  const { contactInfo, note } = req.body;
+  const { fullName, seniorName, companyName ,contactInfo, note } = req.body;
 
   if (
     [fullName, seniorName, companyName, contactInfo, note].some(

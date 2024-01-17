@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/sliceHooks'
 import RecentArticleCard from './RecentArticleCard'
 import {
   fetchRecentArticle,
+  sortByDate,
   sortByName
 } from '../store/slices/recentArticleSlice'
 import ListComponent from '../ui/HomeLayout'
@@ -16,11 +17,17 @@ const RecentArticles = () => {
     dispatch(fetchRecentArticle())
   }, [])
 
-  const handleButtonClick = () => {
+  const handleName = () => {
     dispatch(sortByName())
   }
+  const handleDate = () => {
+    dispatch(sortByDate())
+  }
 
-  const buttons = [{ label: 'Sort By Name', onClick: handleButtonClick }]
+  const buttons = [
+    { label: 'Sort By Name', onClick: handleName },
+    { label: 'Sort By Date', onClick: handleDate }
+  ]
 
   return (
     <ListComponent

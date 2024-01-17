@@ -12,7 +12,7 @@ const Navbar = () => {
     navigate(`/article/${action}`)
   }
   return (
-    <nav className='nav flex  flex-wrap justify-between items-center p-pad min-h-[10vh] '>
+    <nav className='nav flex border-b-2 border-pri flex-wrap justify-between items-center p-pad min-h-[10vh] '>
      <div className='w-2/5'>
         <Link to={'/'}>
           <img src={logo} alt='' className=' homelogo w-[32%] logo' />

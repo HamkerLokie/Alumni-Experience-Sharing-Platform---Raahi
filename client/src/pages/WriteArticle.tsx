@@ -1,16 +1,20 @@
-import { Fragment, useState } from 'react'
+import { FormEvent, Fragment, useEffect, useState } from 'react'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import InputTags from '../ui/InputTags'
 import ArticleEditor from '../components/ArticleEditor'
+import useApiError from '../hooks/useApiError'
+import Swal from 'sweetalert2'
+import axios from '../axios'
+import useApiSuccess from '../hooks/useApiSuccess'
 
 interface FormState {
   articleDetails: {
     [key: string]: string | boolean
     title: string
     companyName: string
-    name: string
-    contact: string
+    fullName: string
+    email: string
     showName: boolean
   }
   errors: {
@@ -20,7 +24,7 @@ interface FormState {
     name: string | null
     contact: string | null
   }
-  articleText: string
+  description: string
   tags: string[]
   formIsHalfFilledOut: boolean
   isAnyChange: boolean
@@ -37,13 +41,15 @@ interface FormState {
 }
 
 const WriteArticle = () => {
-  
+  const { handleApiError } = useApiError()
+  const {handleApiSuccess} = useApiSuccess()
+
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {
       title: '',
       companyName: '',
-      name: '',
-      contact: '',
+      fullName: '',
+      email: '',
       showName: true
     },
     errors: {
@@ -52,7 +58,7 @@ const WriteArticle = () => {
       name: '',
       contact: ''
     },
-    articleText: '',
+    description: '',
     tags: ['Interview-experience'],
     formIsHalfFilledOut: false,
     isAnyChange: false,
@@ -68,10 +74,27 @@ const WriteArticle = () => {
     articleIDForFeedback: ''
   })
 
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      if (formData.formIsHalfFilledOut) {
+        const message =
+          'You have unsaved changes. Are you sure you want to leave?'
+        event.returnValue = message
+        return message
+      }
+    }
+
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [formData.formIsHalfFilledOut])
+
   const handleEditorInputChange = (data: any) => {
     setFormData(prev => ({
       ...prev,
-      articleText: data,
+      description: data,
       formIsHalfFilledOut: true
     }))
   }
@@ -118,12 +141,57 @@ const WriteArticle = () => {
     return false
   }
 
-  const handlePreSubmit = () => {
+  const handlePreSubmit = async (event: FormEvent) => {
+    event.preventDefault()
     if (checkEmptyFields()) {
       setFormData(prev => ({
         ...prev,
         isShowPreSubmit: true
       }))
+    }
+
+    if (formData.isShowPreSubmit && formData.description.length > 0) {
+      const confirmation = await Swal.fire?.({
+        title: 'ARE YOU SURE?',
+        text: 'Do you want to submit?',
+        icon: 'question',
+        confirmButtonText: 'Submit'
+      })
+
+      if (confirmation.isConfirmed) {
+        handleSubmit(event)
+      }
+    } else {
+      Swal.fire?.({
+        title: 'Please Write Something',
+        text: 'Article is Empty',
+        icon: 'error',
+        confirmButtonText: 'Revisit'
+      })
+    }
+  }
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault()
+    const { description, tags } = formData
+    const { title, companyName, fullName, showName, email } =
+      formData.articleDetails
+
+    const payload = {
+      title,
+      companyName,
+      fullName,
+      showName,
+      description,
+      tags,
+      email
+    }
+
+    try {
+      const response = await axios.post('/articles/post', payload);
+      handleApiSuccess(response.data)
+    } catch (error) {
+      handleApiError(error)
     }
   }
 
@@ -132,7 +200,8 @@ const WriteArticle = () => {
       <h1 className='flex flex-wrap justify-center text-2xl p-3 font-prompt text-pri font-[800]'>
         Write your experience here.
       </h1>
-      <div className='flex overflow-hidden'>
+     
+      <form className='flex overflow-hidden'>
         <div className='write-form w-1/2 flex flex-col gap-5 p-input justify-between  '>
           <section className='write-form w-full flex flex-col gap-5  '>
             <input
@@ -162,7 +231,7 @@ const WriteArticle = () => {
                 <input
                   type='text'
                   placeholder='Your Name'
-                  onChange={handleInputValue('name')}
+                  onChange={handleInputValue('fullName')}
                 />
                 <span className='text-red-600 text-sm p-0 -my-5 mb-1'>
                   {formData.errors.name}
@@ -187,7 +256,7 @@ const WriteArticle = () => {
             <input
               type='email'
               placeholder='College/Personal Email'
-              onChange={handleInputValue('contact')}
+              onChange={handleInputValue('email')}
             />
             <span className='text-red-600 text-sm p-0 -my-5 mb-1'>
               {formData.errors.contact}
@@ -206,7 +275,7 @@ const WriteArticle = () => {
           </button>
         </div>
         <ArticleEditor handleInputChange={handleEditorInputChange} />
-      </div>
+      </form>
     </Fragment>
   )
 }

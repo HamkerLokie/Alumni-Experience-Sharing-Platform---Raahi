@@ -20,12 +20,22 @@ const RecentArticleCard: React.FC<RecentArticleProps> = ({
     let dt = new Date(str)
     return dt.getDate() + '/' + (dt.getMonth() + 1) + '/' + dt.getFullYear()
   }
+
+  const replaceHTMLTags = (str: string) => {
+    str = str
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&nbsp;/g, ' ')
+    return str.replace(/<\/?[^>]+(>|$)/g, '')
+  }
+
   return (
     <>
       <Link to={`/article/${id}`}>
         <div className='article-card  shadow-sm'>
           <span className='title'>{title}</span>
-          <span className='summary'>{description}</span>
+          <span className='summary'>{replaceHTMLTags(description)}</span>
           <div className='flex mt-1'>
             <span className='name font-[500]'>by {name}</span>
 
