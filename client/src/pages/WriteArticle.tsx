@@ -42,7 +42,7 @@ interface FormState {
 
 const WriteArticle = () => {
   const { handleApiError } = useApiError()
-  const {handleApiSuccess} = useApiSuccess()
+  const { handleApiSuccess } = useApiSuccess()
 
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {
@@ -188,7 +188,7 @@ const WriteArticle = () => {
     }
 
     try {
-      const response = await axios.post('/articles/post', payload);
+      const response = await axios.post('/articles/post', payload)
       handleApiSuccess(response.data)
     } catch (error) {
       handleApiError(error)
@@ -197,11 +197,11 @@ const WriteArticle = () => {
 
   return (
     <Fragment>
-      <h1 className='flex flex-wrap justify-center text-2xl p-3 font-prompt text-pri font-[800]'>
+      <h1 className='flex flex-wrap justify-center text-2xl p-3 font-julius text-pri font-[800]'>
         Write your experience here.
       </h1>
-     
-      <form className='flex overflow-hidden'>
+
+      <form className='flex w-full flex-col gap-3  justify-center items-center overflow-hidden'>
         <div className='write-form w-1/2 flex flex-col gap-5 p-input justify-between  '>
           <section className='write-form w-full flex flex-col gap-5  '>
             <input
@@ -267,14 +267,15 @@ const WriteArticle = () => {
               setTags={tags => setFormData(prev => ({ ...prev, tags }))}
             />
           </section>
-          <button
-            onClick={handlePreSubmit}
-            className='bg-pri text-white rounded-full font-bold w-1/2 self-center p-pad'
-          >
-            Submit
-          </button>
         </div>
         <ArticleEditor handleInputChange={handleEditorInputChange} />
+        
+        <button
+          onClick={handlePreSubmit}
+          className='bg-pri text-white rounded-full font-bold w-[15%] m-5 self-center p-pad'
+        >
+          Submit
+        </button>
       </form>
     </Fragment>
   )

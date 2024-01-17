@@ -3,6 +3,7 @@ import FormInput from '../ui/FormInput'
 import axios from '../axios'
 import useApiError from '../hooks/useApiError'
 import useApiSuccess from '../hooks/useApiSuccess'
+import Loader from '../ui/Loader'
 
 const RequestArticle = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const RequestArticle = () => {
     note: '',
     contactInfo: ''
   })
+  const [loading, setLoading] = useState<boolean>(false)
 
   const { handleApiError } = useApiError()
   const { handleApiSuccess } = useApiSuccess()
@@ -20,21 +22,25 @@ const RequestArticle = () => {
     e.preventDefault()
 
     try {
+      setLoading(true)
       const response = await axios.post('/articles/request', formData)
       handleApiSuccess(response?.data)
     } catch (error) {
       handleApiError(error)
+    } finally {
+      setLoading(false)
     }
   }
   return (
     <Fragment>
-      <h1 className='flex flex-wrap justify-center text-2xl p-3 font-prompt text-pri font-[800]'>
+      {loading && <Loader />}
+      <h1 className='flex flex-wrap justify-center text-2xl p-3 font-julius text-pri font-[800]'>
         Whose experience you wanna know?
       </h1>
       <br />
       <div className='bg-ter flex flex-col flex-wrap items-center justify-center  '>
         <form
-          className=' flex flex-col flex-wrap p-5 shadow-xl sh rounded-2xl'
+          className=' flex flex-col flex-wrap p-5 shadow-xl sh rounded-2xl font-josefin'
           onSubmit={handleSubmit}
         >
           <h3 className='text-2xl font-extrabold text-pri'>

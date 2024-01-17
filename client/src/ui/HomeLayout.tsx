@@ -2,6 +2,7 @@ import React from 'react'
 import ErrorCard from './ErrorCard'
 import Heading from './Heading'
 import NoDataCard from './NoDataCard'
+import Loader from './Loader'
 
 interface ListComponentProps<T> {
   title: string
@@ -38,7 +39,7 @@ function ListComponent<T> ({
           ))}
         </div>
       )}
-      {loading && <div>Loading...</div>}
+      {loading && <Loader/>}
       {error && <ErrorCard error={error} />}
       {data.length === 0 && !error && (
         <NoDataCard message={`Zero ${title} Found`} />

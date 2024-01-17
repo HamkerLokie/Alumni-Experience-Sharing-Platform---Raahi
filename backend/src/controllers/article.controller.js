@@ -5,8 +5,8 @@ import axios from "axios";
 import { ApiError } from "../utils/ApiError.js";
 
 const postArticle = asyncHandler(async (req, res) => {
-
-  const {title, companyName, fullName, showName , description, tags, email } = req.body;
+  const { title, companyName, fullName, showName, description, tags, email } =
+    req.body;
 
   const response = await axios.get(
     `https://autocomplete.clearbit.com/v1/companies/suggest?query=${companyName}`
@@ -52,13 +52,15 @@ const getSingleArticle = asyncHandler(async (req, res) => {
   const article = await Article.find({
     _id: req.params.articleId,
     isVerified: true,
-  });
+  }).select('-__v -companyDomainName -updatedAt -isVerified');
 
   if (article.length === 0) {
     throw new ApiError(400, `No article with found !!`);
   }
 
-  return res.status(200).json(new ApiResponse(200, article, "Article Found!!"));
+  return res
+    .status(200)
+    .json(new ApiResponse(200, article, "Read Full Article!!"));
 });
 
 const getArticleByTags = asyncHandler(async (req, res) => {

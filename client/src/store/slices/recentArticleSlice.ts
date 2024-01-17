@@ -114,6 +114,8 @@ export const fetchRecentArticle = createAsyncThunk(
   }
 )
 
+
+
 export const fetchCompanyArticle = createAsyncThunk(
   'company_articles',
   async (companyName, { rejectWithValue }) => {

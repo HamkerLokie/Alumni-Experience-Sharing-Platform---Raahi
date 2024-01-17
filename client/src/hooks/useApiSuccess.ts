@@ -20,6 +20,7 @@ const useApiSuccess = () => {
       message: success?.message,
       isSuccess: success?.success
     }
+
     setSuccess(apiSuccess)
     if (apiSuccess.message) {
       toast.success(apiSuccess.message)
