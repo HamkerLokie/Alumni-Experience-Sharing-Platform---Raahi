@@ -1,15 +1,14 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from 'firebase/app'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA_ZwQRqWpAy8lQ68d49ihiKcnYEON3SW8",
-  authDomain: "raahi-esp.firebaseapp.com",
-  projectId: "raahi-esp",
-  storageBucket: "raahi-esp.appspot.com",
-  messagingSenderId: "889909791436",
-  appId: "1:889909791436:web:24069ffa3cf66b492ed069",
-  measurementId: "G-QPN4PM6Y8T"
-};
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
+  measurementId: import.meta.env.VITE_measurementId
+}
 
-export const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+export const app = initializeApp(firebaseConfig)
