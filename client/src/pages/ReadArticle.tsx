@@ -10,7 +10,7 @@ interface ArticleData {
   email: string
   companyName: string
   createdAt: string
-  description: String
+  description: string
   fullName: string
   showName: string
   tags: string[]
@@ -54,44 +54,48 @@ const ReadArticle = () => {
     return str?.replace(/\s/g, '') || ''
   }
 
-  const parseHTMLTags = (str: String) => {
+  const parseHTMLTags = (str: string) => {
     return (
       str?.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&') ||
       ''
     )
   }
-  console.log(articleData?.description)
 
   return (
-    <div className='w-full flex justify-center items-center'>
-      {loading && <Loader />}
-      <div className=' bg-light p-5 m-auto w-3/4'>
-        <h2 className='font-[600]  text-2xl italic font-josefin  text-blue-gray-800'>
-          {articleData?.title}
-        </h2>
-        <div className='font-prompt text-sm'>
-          &nbsp;by{' '}
-          {articleData?.showName ? `${articleData.fullName}` : ' AITian '}{' '}
-          &nbsp; |&nbsp; {parseDate(articleData?.createdAt!)} &nbsp; |&nbsp;
-          <Link
-            className='bg-pri underline text-white px-1 rounded-full'
-            to={`/interview/${articleData?.companyName}`}
-          >
-            {articleData?.companyName}
-          </Link>
-          <div className='my-2'>
-            Tags:
-            {articleData?.tags.map(tag => {
-              return (
-                <span className='bg-black text-white text-center mx-1 px-[.8em] rounded-full'>
-                  {removeSpaces(tag)}{' '}
-                </span>
-              )
-            })}
+    <div className='w-full flex justify-center p-5 items-center'>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className=' bg-light p-5 m-auto w-[70%]'>
+          <h2 className='font-[600]  text-2xl italic font-josefin  text-blue-gray-800'>
+            {articleData?.title}
+          </h2>
+          <div className='font-prompt text-sm'>
+            &nbsp;by{' '}
+            {articleData?.showName ? `${articleData.fullName}` : ' Cuian '}{' '}
+            &nbsp; |&nbsp; {parseDate(articleData?.createdAt!)} &nbsp; |&nbsp;
+            <Link
+              className='text-black underline px-1 rounded-full'
+              to={`/interview/${articleData?.companyName}`}
+            >
+              {articleData?.companyName}
+            </Link>
+            <div className='my-2'>
+              Tags:
+              {articleData?.tags.map(tag => {
+                return (
+                  <span className='bg-black text-white text-center mx-1 px-[.8em] rounded-full'>
+                    {removeSpaces(tag)}{' '}
+                  </span>
+                )
+              })}
+            </div>
+            <div className='article-post'>
+              {parse(parseHTMLTags(articleData?.description!))}
+            </div>
           </div>
-          <div>{parse(parseHTMLTags(articleData?.description!))}</div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

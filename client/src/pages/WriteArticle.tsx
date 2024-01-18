@@ -7,6 +7,7 @@ import useApiError from '../hooks/useApiError'
 import Swal from 'sweetalert2'
 import axios from '../axios'
 import useApiSuccess from '../hooks/useApiSuccess'
+import Loader from '../ui/Loader'
 
 interface FormState {
   articleDetails: {
@@ -73,6 +74,7 @@ const WriteArticle = () => {
     feedbackshow: false,
     articleIDForFeedback: ''
   })
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
@@ -188,10 +190,15 @@ const WriteArticle = () => {
     }
 
     try {
+      setLoading(true);
       const response = await axios.post('/articles/post', payload)
       handleApiSuccess(response.data)
     } catch (error) {
+      console.log(error);
+      
       handleApiError(error)
+    }finally{
+      setLoading(false)
     }
   }
 
@@ -200,6 +207,9 @@ const WriteArticle = () => {
       <h1 className='flex flex-wrap justify-center text-2xl p-3 font-julius text-pri font-[800]'>
         Write your experience here.
       </h1>
+      {
+        loading && <Loader/>
+      }
 
       <form className='flex w-full flex-col gap-3  justify-center items-center overflow-hidden'>
         <div className='write-form w-1/2 flex flex-col gap-5 p-input justify-between  '>
@@ -213,11 +223,11 @@ const WriteArticle = () => {
               {formData.errors.title}
             </span>
             <div className='flex w-full justify-between gap-1'>
-              <div className='w-full'>
+              <div className='w-[55%]'>
                 <input
                   type='text'
                   placeholder='Comapany Name'
-                  className='w-3/4'
+                  className='w-full'
                   required
                   onChange={handleInputValue('companyName')}
                 />{' '}
@@ -227,9 +237,10 @@ const WriteArticle = () => {
                 </span>
               </div>
 
-              <div>
+              <div className='w-[45%]'>
                 <input
                   type='text'
+                  className='w-full'
                   placeholder='Your Name'
                   onChange={handleInputValue('fullName')}
                 />

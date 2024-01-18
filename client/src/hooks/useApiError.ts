@@ -19,11 +19,11 @@ const useApiError = () => {
     if (axios.isAxiosError(error)) {
       const apiError: ApiError = {
         status: error.response?.status,
-        message: error.response?.data?.message,
+        message: error.response?.data?.message || error.message,
         data: error.response?.data
       }
       setError(apiError)
-      if (apiError.message) {
+      if (apiError.message ) {
         toast.error(apiError.message)
       }
     } else {

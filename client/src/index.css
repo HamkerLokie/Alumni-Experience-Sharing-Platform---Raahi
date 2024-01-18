@@ -13,11 +13,13 @@ main {
   min-height: calc(100vh - 10vh);
 }
 
-input::placeholder, textarea::placeholder{
+input::placeholder,
+textarea::placeholder {
   font-family: 'Josefin Sans';
   color: #484b6a;
   font-size: small;
 }
+
 .companies::-webkit-scrollbar,
 .recentarticles::-webkit-scrollbar,
 .wrapper-class::-webkit-scrollbar {
@@ -50,7 +52,7 @@ input::placeholder, textarea::placeholder{
 } */
 
 
-.com-tag{
+.com-tag {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -139,14 +141,14 @@ input::placeholder, textarea::placeholder{
 
 }
 
-.editor-wrapper{
+.editor-wrapper {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 49%;
 }
 
 .toolbar-class {
   background-color: #5588ac;
-  
+
   z-index: 10;
 }
 
@@ -155,7 +157,7 @@ input::placeholder, textarea::placeholder{
   top: 0;
   z-index: 10;
   border-radius: 0;
-  
+
 }
 
 .rdw-editor-main {
@@ -185,7 +187,7 @@ input::placeholder, textarea::placeholder{
   border: 2px solid #0092f8;
 }
 
-.tags-input input{
+.tags-input input {
   outline: none;
   border: 0;
   border-radius: 5px;
@@ -200,7 +202,7 @@ input::placeholder, textarea::placeholder{
   min-height: 48px;
   width: 100%;
   border-radius: 6px;
- 
+
 }
 
 #tags {
@@ -255,14 +257,15 @@ input::placeholder, textarea::placeholder{
 } */
 
 
-input, textarea{
+input,
+textarea {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
 
 }
 
 
 
-.loader-overlay{
+.loader-overlay {
   position: fixed;
   z-index: 13;
   top: 0;
@@ -272,11 +275,31 @@ input, textarea{
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.hourglass-loading{
+.hourglass-loading {
   position: fixed;
   z-index: 14;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+
+
+.article-post {
+  font-family: 'Archivo Narrow';
+  font-size: 1rem;
+  line-height: 1.8;
+  overflow: hidden;
+  color: rgba(0, 0, 0, .8);
+}
+
+.article-post p,
+.article-post blockquote {
+  margin: 0 0 0.4rem 0;
+}
+
+.article-post ul {
+  list-style: disc;
+  text-align: -webkit-match-parent;
 }
 

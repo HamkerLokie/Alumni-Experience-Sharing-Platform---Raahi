@@ -123,7 +123,7 @@ export const fetchCompanyArticle = createAsyncThunk(
       const response = await axios.get(`/companies/${companyName}`)
       return response.data
     } catch (error) {
-      return rejectWithValue('Failed to Fetch Comapny Articles')
+      throw rejectWithValue('Failed to Fetch Comapny Articles')
     }
   }
 )
