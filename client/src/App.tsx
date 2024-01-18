@@ -8,6 +8,7 @@ import Guidelines from './pages/Guidelines'
 import toastOptions from './ui/toastOptions'
 import { Toaster } from 'react-hot-toast'
 import ReadArticle from './pages/ReadArticle'
+import AuthenticationComponent from './components/AuthenticationComponent'
 
 function App () {
   return (
@@ -25,6 +26,9 @@ function App () {
           <Route path='/article/guidelines' element={<Guidelines />} />
         </Routes>
       </main>
+      <div className='fixed bottom-5 right-1 '>
+        <AuthenticationComponent/>
+      </div>
     </>
   )
 }

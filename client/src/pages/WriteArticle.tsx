@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 import axios from '../axios'
 import useApiSuccess from '../hooks/useApiSuccess'
 import Loader from '../ui/Loader'
+import useRequireAuth from '../hooks/useRequireAuth'
 
 interface FormState {
   articleDetails: {
@@ -44,6 +45,7 @@ interface FormState {
 const WriteArticle = () => {
   const { handleApiError } = useApiError()
   const { handleApiSuccess } = useApiSuccess()
+  useRequireAuth();
 
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {
@@ -190,14 +192,14 @@ const WriteArticle = () => {
     }
 
     try {
-      setLoading(true);
+      setLoading(true)
       const response = await axios.post('/articles/post', payload)
       handleApiSuccess(response.data)
     } catch (error) {
-      console.log(error);
-      
+      console.log(error)
+
       handleApiError(error)
-    }finally{
+    } finally {
       setLoading(false)
     }
   }
@@ -207,9 +209,7 @@ const WriteArticle = () => {
       <h1 className='flex flex-wrap justify-center text-2xl p-3 font-julius text-pri font-[800]'>
         Write your experience here.
       </h1>
-      {
-        loading && <Loader/>
-      }
+      {loading && <Loader />}
 
       <form className='flex w-full flex-col gap-3  justify-center items-center overflow-hidden'>
         <div className='write-form w-1/2 flex flex-col gap-5 p-input justify-between  '>
@@ -280,7 +280,7 @@ const WriteArticle = () => {
           </section>
         </div>
         <ArticleEditor handleInputChange={handleEditorInputChange} />
-        
+
         <button
           onClick={handlePreSubmit}
           className='bg-pri text-white rounded-full font-bold w-[15%] m-5 self-center p-pad'

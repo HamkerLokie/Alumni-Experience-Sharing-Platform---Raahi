@@ -12,7 +12,7 @@ const Navbar = () => {
     navigate(`/article/${action}`)
   }
   return (
-    <nav className='nav sticky top-0 z-15 flex border-b-2 border-pri flex-wrap justify-between items-center p-pad min-h-[10vh] bg-white '>
+    <nav className='nav flex border-b-2 border-pri flex-wrap justify-between items-center p-pad min-h-[10vh] bg-white '>
      <div className='w-2/5'>
         <Link to={'/'}>
           <img src={logo} alt='' className=' homelogo w-[32%] logo' />

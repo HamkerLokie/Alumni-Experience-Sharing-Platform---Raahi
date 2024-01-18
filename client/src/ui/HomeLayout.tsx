@@ -24,7 +24,7 @@ function ListComponent<T> ({
   buttons
 }: ListComponentProps<T>) {
   return (
-    <div className='list-component companies w-[25%] text-center font-archivo flex flex-col items-center text-lg p-input overflow-x-hidden max-h-[85vh] overflow-scroll'>
+    <div className='list-component companies w-[25%] text-center font-archivo flex flex-col items-center text-lg p-input overflow-x-hidden max-h-[90vh] overflow-scroll'>
       <Heading heading={title} />
       {buttons && (
         <div className='w-full'>

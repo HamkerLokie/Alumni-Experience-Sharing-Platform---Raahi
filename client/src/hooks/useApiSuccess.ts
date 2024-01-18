@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import { useAuth } from '../context/AuthContext'
 
 interface ApiSuccess {
   statusCode?: number
@@ -9,6 +10,7 @@ interface ApiSuccess {
 
 const useApiSuccess = () => {
   const [success, setSuccess] = useState<ApiSuccess | null>(null)
+  const { user } = useAuth()
 
   const clearSuccess = () => {
     setSuccess(null)
@@ -22,7 +24,7 @@ const useApiSuccess = () => {
     }
 
     setSuccess(apiSuccess)
-    if (apiSuccess.message) {
+    if (apiSuccess.message && user) {
       toast.success(apiSuccess.message)
     }
   }

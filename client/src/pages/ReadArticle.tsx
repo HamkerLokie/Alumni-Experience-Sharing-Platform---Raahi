@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import useApiError from '../hooks/useApiError'
 import useApiSuccess from '../hooks/useApiSuccess'
 import axios from '../axios'
 import Loader from '../ui/Loader'
 import parse from 'html-react-parser'
+import useRequireAuth from '../hooks/useRequireAuth'
 
 interface ArticleData {
   email: string
@@ -19,6 +20,7 @@ interface ArticleData {
 }
 
 const ReadArticle = () => {
+  useRequireAuth()
   const { handleApiSuccess } = useApiSuccess()
   const { handleApiError } = useApiError()
   const [loading, setLoading] = useState<boolean>(false)
@@ -31,7 +33,6 @@ const ReadArticle = () => {
     try {
       setLoading(true)
       const response = await axios.get(queryString)
-      console.log('hii', response.data)
       setArticleData(response.data?.data[0])
       handleApiSuccess(response.data)
     } catch (error) {
@@ -60,6 +61,7 @@ const ReadArticle = () => {
       ''
     )
   }
+
 
   return (
     <div className='w-full flex justify-center p-5 items-center'>

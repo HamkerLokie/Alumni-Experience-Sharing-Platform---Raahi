@@ -4,8 +4,10 @@ import axios from '../axios'
 import useApiError from '../hooks/useApiError'
 import useApiSuccess from '../hooks/useApiSuccess'
 import Loader from '../ui/Loader'
+import useRequireAuth from '../hooks/useRequireAuth'
 
 const RequestArticle = () => {
+  useRequireAuth()
   const [formData, setFormData] = useState({
     fullName: '',
     seniorName: '',
