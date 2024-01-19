@@ -22,14 +22,13 @@ const AuthenticationComponent = () => {
       setLoading(false)
     }
   }
-  if (loading) {
-    return <Loader />
-  }
+
   return (
     <div className=''>
+      {loading && <Loader />}
       {user !== null ? (
         <>
-          <div className='logout-btn flex bg-black text-white px-4 font-prompt items-center justify-between border-2 border-amber-500 tracking-wider rounded-full '>
+          <div className='logout-btn flex bg-black text-white px-3 font-prompt items-center justify-between border-2 border-amber-500 tracking-wider rounded-full '>
             <button
               className='peer mx-2 grid h-20 w-20  place-content-center overflow-hidden rounded-full  xl:h-10 xl:w-10 '
               title={user?.displayName!}
@@ -49,7 +48,7 @@ const AuthenticationComponent = () => {
             </button>
 
             <div className=''>
-              <button className='' onClick={handleLogOut}>
+              <button className=' font-josefin' onClick={handleLogOut}>
                 Logout
               </button>
             </div>

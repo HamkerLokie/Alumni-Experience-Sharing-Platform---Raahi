@@ -1,0 +1,150 @@
+@media screen and (max-width:500px) {
+    .navbar {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar img {
+        width: 70%;
+        align-items: center;
+    }
+
+    .navbar button {
+        font-size: .8em;
+        width: 100%;
+    }
+
+    .nav-btn-wrapper {
+        width: 400px;
+        font-size: smaller;
+        justify-content: space-between;
+    }
+
+    .homepage {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        width: 100%;
+    }
+
+    .bet-wrapper {
+        column-span: 2;
+        width: 100%;
+
+    }
+
+    .home-layout:first-child {
+        grid-row: 2;
+        width: 100%;
+        margin-bottom: 2em;
+    }
+    .home-layout:last-child {
+        padding: 0;
+        grid-row: 3;
+        width: 100%;
+    }
+
+    .btn-wrap {
+        width: 100%;
+    }
+
+    .sort-btn {
+        font-size: .6em;
+
+    }
+
+    .article-card {
+        width: 100%;
+    }
+    .company-name{
+        width: 100%;
+    }
+}
+
+
+/* Mobile Viewport (up to 767px) */
+@media (min-width:500px) and (max-width: 767px) {
+
+    .navbar {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .navbar img {
+        width: 70%;
+        align-items: center;
+    }
+
+    .navbar button {
+        font-size: .6em;
+        width: 100%;
+    }
+
+    .nav-btn-wrapper {
+        width: 50%;
+        font-size: smaller;
+    }
+
+    .homepage {
+        display: grid;
+        grid-template-rows: 1fr auto;
+        width: 100%;
+    }
+
+    .bet-wrapper {
+        column-span: 2;
+        width: 100%;
+
+    }
+
+    .home-layout:first-child {
+        grid-row: 2;
+        width: 100%;
+        margin-bottom: 2em;
+    }
+    .home-layout:last-child {
+        padding: 0;
+        grid-row: 3;
+        width: 100%;
+    }
+
+    .btn-wrap {
+        width: 100%;
+    }
+
+    .sort-btn {
+        font-size: .6em;
+
+    }
+    .node-render{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        place-items: center;
+        column-gap: 1;
+    }
+
+    .article-card {
+        width: 99%;
+    }
+    .company-name{
+        width: 100%;
+    }
+}
+
+
+/* Tablet Viewport (768px to 991px) */
+@media screen and (min-width: 768px) and (max-width: 991px) {}
+
+
+
+/* Small Desktop Viewport (992px to 1199px) */
+@media screen and (min-width: 992px) and (max-width: 1199px) {}
+
+
+
+/* Large Desktop Viewport (1200px and above) */
+@media screen and (min-width: 1200px) {}

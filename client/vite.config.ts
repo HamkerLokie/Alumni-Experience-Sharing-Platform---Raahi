@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   define: {
     'import.meta.env': process.env
-  }
+  },
+  // server: {
+  //   host: '192.168.1.7',
+  // },
 })

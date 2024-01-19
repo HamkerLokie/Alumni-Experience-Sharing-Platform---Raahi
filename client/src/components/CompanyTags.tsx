@@ -10,10 +10,10 @@ interface CompanyTagsProps {
 const CompanyTags: React.FC<CompanyTagsProps> = ({ count, company, img }) => {
   return (
     <>
-      <div className='w-[70%]  flex flex-col items-center'>
+      <div className='company-name w-[70%]  flex flex-col items-center'>
         <Link
           to={`/interview/${company}`}
-          className='com-tag bg-gray text-white  rounded-full p-pad w-[90%] px-3 flex justify-between items-center my-1 '
+          className='com-tag text-black text-sm font-josefin rounded-full p-pad w-[90%] px-3 flex justify-between items-center my-1 '
         >
           <div className='flex items-center  w-full'>
             <img

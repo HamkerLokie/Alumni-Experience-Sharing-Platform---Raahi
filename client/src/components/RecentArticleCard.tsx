@@ -33,9 +33,9 @@ const RecentArticleCard: React.FC<RecentArticleProps> = ({
   return (
     <>
       <Link to={`/article/${id}`}>
-        <div className='article-card  shadow-sm'>
-          <span className='title'>{title}</span>
-          <span className='summary'>{replaceHTMLTags(description)}</span>
+        <div className='article-card shadow-sm'>
+          <span className='title font-josefin'>{title}</span>
+          <span className='summary '>{replaceHTMLTags(description)}</span>
           <div className='flex mt-1'>
             <span className='name font-[500]'>by {name}</span>
 

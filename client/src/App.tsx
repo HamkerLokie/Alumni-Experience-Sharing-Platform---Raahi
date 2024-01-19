@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Homepage from './pages/Homepage'
 import ArticlesCompany from './pages/ArticlesCompany'
@@ -10,11 +10,16 @@ import { Toaster } from 'react-hot-toast'
 import ReadArticle from './pages/ReadArticle'
 import AuthenticationComponent from './components/AuthenticationComponent'
 
+
 function App () {
+  const location = useLocation()
+  const isAuthenticationComponentVisible =
+    !location.pathname.startsWith('/article')
+
   return (
     <>
-      <Navbar />
       <Toaster position='top-center' toastOptions={toastOptions}></Toaster>
+      <Navbar />
 
       <main className='bg-ter'>
         <Routes>
@@ -26,9 +31,18 @@ function App () {
           <Route path='/article/guidelines' element={<Guidelines />} />
         </Routes>
       </main>
-      <div className='fixed bottom-5 right-1 '>
-        <AuthenticationComponent/>
-      </div>
+
+      {
+        <div
+          className={
+            isAuthenticationComponentVisible
+              ? 'fixed bottom-5 right-[45%] '
+              : 'fixed bottom-5 right-2 '
+          }
+        >
+          <AuthenticationComponent />
+        </div>
+      }
     </>
   )
 }

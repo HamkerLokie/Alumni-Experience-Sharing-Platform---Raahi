@@ -12,16 +12,16 @@ const Navbar = () => {
     navigate(`/article/${action}`)
   }
   return (
-    <nav className='nav flex border-b-2 border-pri flex-wrap justify-between items-center p-pad min-h-[10vh] bg-white '>
-     <div className='w-2/5'>
+    <nav className='navbar flex flex-wrap justify-between items-center p-pad min-h-[10vh] '>
+     <div className='w-2/5 '>
         <Link to={'/'}>
           <img src={logo} alt='' className=' homelogo w-[32%] logo' />
         </Link>
       </div>
-      <div className='w-[24%] flex items-center justify-between '>
+      <div className='nav-btn-wrapper w-[24%] flex items-center justify-between   '>
         <Button
           text='Write Article'
-          classes='bg-pri text-white px-3 text-lg shadow-xl'
+          classes='bg-pri text-white px-3 text-lg shadow-xl md:text-sm '
           handleFunction={() => handleButton('write')}
         />
         <Button
