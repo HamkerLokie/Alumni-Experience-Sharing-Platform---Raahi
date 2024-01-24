@@ -44,7 +44,7 @@ function ListComponent<T> ({
       {data.length === 0 && !error && (
         <NoDataCard message={`Zero ${title} Found`} />
       )}
-      <div className=' node-render overflow-x-hidden min-h-[40vh] max-h-[90vh] w-full '>
+      <div className='node-render overflow-x-hidden min-h-[40vh] max-h-[90vh] w-full '>
         {!loading &&
           data.map((item, index) => (
             <React.Fragment key={index}>{renderItem(item)}</React.Fragment>

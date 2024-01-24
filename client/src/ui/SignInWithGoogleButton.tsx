@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from 'react'
+import { FC, useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 import Loader from './Loader'
@@ -15,6 +15,7 @@ const SignInWithGoogleButton: FC<GoogleButtonProps> = ({ title }) => {
       setLoading(true)
       await signInWithGoogle()
     } catch (error) {
+      console.log(error)
       toast.error('Try Again!')
     } finally {
       setLoading(true)

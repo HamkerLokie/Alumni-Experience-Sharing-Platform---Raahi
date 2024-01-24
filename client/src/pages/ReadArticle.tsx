@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import useApiError from '../hooks/useApiError'
 import useApiSuccess from '../hooks/useApiSuccess'
 import axios from '../axios'
@@ -64,11 +64,11 @@ const ReadArticle = () => {
 
 
   return (
-    <div className='w-full flex justify-center p-5 items-center'>
+    <div className=' w-full flex justify-center p-5 items-center'>
       {loading ? (
         <Loader />
       ) : (
-        <div className=' bg-light p-5 m-auto w-[70%]'>
+        <div className='read-art bg-light p-5 m-auto w-[70%]'>
           <h2 className='font-[600]  text-2xl italic font-josefin  text-blue-gray-800'>
             {articleData?.title}
           </h2>

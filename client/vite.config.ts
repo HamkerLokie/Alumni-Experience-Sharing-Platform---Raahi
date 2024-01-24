@@ -7,7 +7,8 @@ export default defineConfig({
   define: {
     'import.meta.env': process.env
   },
-  // server: {
-  //   host: '192.168.1.7',
-  // },
+  server: {
+    // host: '192.168.1.12',
+    host: 'localhost',
+  },
 })

@@ -211,7 +211,7 @@ const WriteArticle = () => {
       </h1>
       {loading && <Loader />}
 
-      <form className='flex w-full flex-col gap-3  justify-center items-center overflow-hidden'>
+      <form className='write-form-container flex w-full flex-col gap-3  justify-center items-center overflow-hidden'>
         <div className='write-form w-1/2 flex flex-col gap-5 p-input justify-between  '>
           <section className='write-form w-full flex flex-col gap-5  '>
             <input
@@ -283,7 +283,7 @@ const WriteArticle = () => {
 
         <button
           onClick={handlePreSubmit}
-          className='bg-pri text-white rounded-full font-bold w-[15%] m-5 self-center p-pad'
+          className='sb-btn bg-pri text-white rounded-full font-bold w-[15%] m-5 self-center p-pad'
         >
           Submit
         </button>

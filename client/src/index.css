@@ -23,20 +23,23 @@ textarea::placeholder {
 
 .companies::-webkit-scrollbar,
 .recentarticles::-webkit-scrollbar,
-.wrapper-class::-webkit-scrollbar {
+.wrapper-class::-webkit-scrollbar,
+.node-render::-webkit-scrollbar {
   width: 5px;
 }
 
 .companies::-webkit-scrollbar-track,
 .recentarticles::-webkit-scrollbar-track,
-.wrapper-class::-webkit-scrollbar-track {
+.wrapper-class::-webkit-scrollbar-track
+.node-render::-webkit-scrollbar-track  {
   box-shadow: transparent;
   border-radius: 10px;
 }
 
 .companies::-webkit-scrollbar-thumb,
 .recentarticles::-webkit-scrollbar-thumb,
-.wrapper-class::-webkit-scrollbar-thumb {
+.wrapper-class::-webkit-scrollbar-thumb ,
+.node-render::-webkit-scrollbar-thumb {
   width: 5px;
   background: rgb(170, 170, 170);
   border-radius: 10px;

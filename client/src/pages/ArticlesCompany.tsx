@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '../hooks/sliceHooks'
 import { fetchCompanyArticle } from '../store/slices/recentArticleSlice'
 import RecentArticleCard from '../components/RecentArticleCard'
 import ErrorCard from '../ui/ErrorCard'
-import NoDataCard from '../ui/NoDataCard'
 import Loader from '../ui/Loader'
 
 const ArticlesCompany = () => {
@@ -13,7 +12,7 @@ const ArticlesCompany = () => {
   const { loading, data, error } = useAppSelector(state => state.articles)
 
   useEffect(() => {
-    dispatch(fetchCompanyArticle(companyName))
+    dispatch(fetchCompanyArticle(companyName as string))
   }, [companyName])
 
   return (
@@ -23,7 +22,7 @@ const ArticlesCompany = () => {
         {companyName?.charAt(0).toUpperCase()! + companyName?.slice(1)!}
         {loading && <Loader/>}
         {error && <ErrorCard error={error} />}
-        <section className='flex gap-2 flex-wrap items-center justify-center mt-2'>
+        <section className='art-list flex gap-2 flex-wrap items-center justify-center mt-2'>
           {data.map(article => (
             <RecentArticleCard
               id={article._id}

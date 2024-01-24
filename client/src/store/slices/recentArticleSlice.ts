@@ -118,7 +118,7 @@ export const fetchRecentArticle = createAsyncThunk(
 
 export const fetchCompanyArticle = createAsyncThunk(
   'company_articles',
-  async (companyName, { rejectWithValue }) => {
+  async (companyName:string, { rejectWithValue }) => {
     try {
       const response = await axios.get(`/companies/${companyName}`)
       return response.data
