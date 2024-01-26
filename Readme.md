@@ -1,5 +1,5 @@
 # Raahi CodeBase
-<img src="https://img.shields.io/badge/code%20style-modular-red"> <img src="https://img.shields.io/badge/NodeJs-v20.8.0-brightgreen
+<img src="https://img.shields.io/badge/code%20style-modular-yellow"> <img src="https://img.shields.io/badge/NodeJs-v20.8.0-brightgreen">
 "> <img src="https://img.shields.io/badge/React-v18.2.0-blue"> <img src="https://img.shields.io/badge/MongoDB%20-%20ATLAS%20-green"> <img src="https://img.shields.io/badge/Express-v4.18.2-red">
 
 Raahi is a platform developed for CUians to read & share encounters of various interviews. Including interviews of big giants like Amazon, Google & Microsoft. This will surely help the upcoming batches of <u>Chandigarh University</u>.
@@ -91,19 +91,17 @@ npm run dev
 ``` 
 ### for both backend and client
 
-### Screens
-
 #### Landing Page,
-![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/tree/main/backend/gallery/homepage.png?raw=true)
-
-#### Experience Page,
-![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/tree/main/backend/gallery/Screenshot%20(185).png?raw=true)
+![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/homepage.png?raw=true)
 
 #### Write Article Page,
-![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/tree/main/backend/gallery/write.png?raw=true)
+![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/write.png?raw=true)
 
 #### Request Article Page,
-![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/tree/main/backend/gallery/request.png?raw=true)
+![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/request.png?raw=true)
+
+#### Guidelines Page,
+![Landing page](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/guidelines.png?raw=true)
 
 ### Routes
 ---
