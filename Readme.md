@@ -118,7 +118,7 @@ npm run dev
 ### Directory 
 
 [FrontEnd]
-![image](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/frontend.png?raw=true)
+![image](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/frontend.png?raw=true)
 
 [Backend]
 ![image](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/backend.png?raw=true)
