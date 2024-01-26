@@ -33,6 +33,7 @@ const RequestArticle = () => {
       setLoading(false)
     }
   }
+  
   return (
     <Fragment>
       {loading && <Loader />}

@@ -5,7 +5,7 @@ import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 interface EditorProps {
-  handleInputChange: (x: string) => void
+  handleInputChange: (x: string, hasText: boolean) => void
 }
 
 const ArticleEditor: FC<EditorProps> = ({ handleInputChange }) => {
@@ -14,8 +14,11 @@ const ArticleEditor: FC<EditorProps> = ({ handleInputChange }) => {
   )
   const changeEditorInput = (data: any) => {
     setEditorState(data)
+    const contentState = editorState.getCurrentContent()
+    const hasText = contentState.hasText()
+
     const x = draftToHtml(convertToRaw(editorState.getCurrentContent()))
-    handleInputChange(x)
+    handleInputChange(x, hasText)
   }
   return (
     <div className='editor-wrapper'>

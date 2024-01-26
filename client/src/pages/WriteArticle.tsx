@@ -9,43 +9,12 @@ import axios from '../axios'
 import useApiSuccess from '../hooks/useApiSuccess'
 import Loader from '../ui/Loader'
 import useRequireAuth from '../hooks/useRequireAuth'
-
-interface FormState {
-  articleDetails: {
-    [key: string]: string | boolean
-    title: string
-    companyName: string
-    fullName: string
-    email: string
-    showName: boolean
-  }
-  errors: {
-    [key: string]: string | boolean | null
-    title: string | null
-    companyName: string | null
-    name: string | null
-    contact: string | null
-  }
-  description: string
-  tags: string[]
-  formIsHalfFilledOut: boolean
-  isAnyChange: boolean
-  showModal: boolean
-  modalTextStatus: string
-  modalContent: {
-    heading: string
-    icon: string
-    text: string
-  }
-  isShowPreSubmit: boolean
-  feedbackshow: boolean
-  articleIDForFeedback: string
-}
+import { FormState } from '../defs/FormType'
 
 const WriteArticle = () => {
   const { handleApiError } = useApiError()
   const { handleApiSuccess } = useApiSuccess()
-  useRequireAuth();
+  useRequireAuth()
 
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {
@@ -74,7 +43,8 @@ const WriteArticle = () => {
     },
     isShowPreSubmit: false,
     feedbackshow: false,
-    articleIDForFeedback: ''
+    articleIDForFeedback: '',
+    editorHasText: false
   })
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -95,10 +65,11 @@ const WriteArticle = () => {
     }
   }, [formData.formIsHalfFilledOut])
 
-  const handleEditorInputChange = (data: any) => {
+  const handleEditorInputChange = (data: string, hasText: boolean) => {
     setFormData(prev => ({
       ...prev,
       description: data,
+      editorHasText: hasText,
       formIsHalfFilledOut: true
     }))
   }
@@ -154,25 +125,30 @@ const WriteArticle = () => {
       }))
     }
 
-    if (formData.isShowPreSubmit && formData.description.length > 0) {
-      const confirmation = await Swal.fire?.({
-        title: 'ARE YOU SURE?',
-        text: 'Do you want to submit?',
-        icon: 'question',
-        confirmButtonText: 'Submit'
-      })
+    setFormData(prev => {
+      if (prev.isShowPreSubmit && prev.editorHasText) {
+        Swal.fire?.({
+          title: 'ARE YOU SURE?',
+          text: 'Do you want to submit?',
+          icon: 'question',
+          confirmButtonText: 'Submit'
+        }).then(confirmation => {
+          if (confirmation.isConfirmed) {
+            handleSubmit(event)
+          }
+        })
+      } else {
+        console.log('else')
 
-      if (confirmation.isConfirmed) {
-        handleSubmit(event)
+        Swal.fire?.({
+          title: 'Please Write Something',
+          text: 'Article is Empty',
+          icon: 'error',
+          confirmButtonText: 'Revisit'
+        })
       }
-    } else {
-      Swal.fire?.({
-        title: 'Please Write Something',
-        text: 'Article is Empty',
-        icon: 'error',
-        confirmButtonText: 'Revisit'
-      })
-    }
+      return prev
+    })
   }
 
   const handleSubmit = async (e: FormEvent) => {
