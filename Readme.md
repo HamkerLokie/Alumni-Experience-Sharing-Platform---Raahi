@@ -119,6 +119,7 @@ npm run dev
 
 [FrontEnd]
 ![image](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/frontend.png?raw=true)
+
 [Backend]
 ![image](https://github.com/HamkerLokie/Alumni-Experience-Sharing-Platform---Raahi/blob/main/backend/gallery/backend.png?raw=true)
 
