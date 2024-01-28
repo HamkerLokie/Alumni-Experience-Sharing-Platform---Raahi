@@ -1,7 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faQuestionCircle
-} from '@fortawesome/free-solid-svg-icons'
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../assets/logo.png'
 import Button from '../ui/Button'
@@ -13,7 +11,7 @@ const Navbar = () => {
   }
   return (
     <nav className='navbar flex flex-wrap justify-between items-center p-pad min-h-[10vh] '>
-     <div className='w-2/5 '>
+      <div className='w-2/5 '>
         <Link to={'/'}>
           <img src={logo} alt='' className=' homelogo w-[32%] logo' />
         </Link>

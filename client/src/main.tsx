@@ -9,13 +9,15 @@ import { store } from './store/store.ts'
 import { AuthProvider } from './context/AuthContext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <Router>
-    <AuthProvider>
+  <>
+    <Router>
       <ThemeProvider>
         <Provider store={store}>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </Provider>
       </ThemeProvider>
-    </AuthProvider>
-  </Router>
+    </Router>
+  </>
 )

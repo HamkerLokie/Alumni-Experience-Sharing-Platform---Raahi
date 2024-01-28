@@ -8,13 +8,11 @@ import Swal from 'sweetalert2'
 import axios from '../axios'
 import useApiSuccess from '../hooks/useApiSuccess'
 import Loader from '../ui/Loader'
-import useRequireAuth from '../hooks/useRequireAuth'
 import { FormState } from '../defs/FormType'
 
 const WriteArticle = () => {
   const { handleApiError } = useApiError()
   const { handleApiSuccess } = useApiSuccess()
-  useRequireAuth()
 
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {

@@ -5,7 +5,6 @@ import useApiSuccess from '../hooks/useApiSuccess'
 import axios from '../axios'
 import Loader from '../ui/Loader'
 import parse from 'html-react-parser'
-import useRequireAuth from '../hooks/useRequireAuth'
 
 interface ArticleData {
   email: string
@@ -20,7 +19,6 @@ interface ArticleData {
 }
 
 const ReadArticle = () => {
-  useRequireAuth()
   const { handleApiSuccess } = useApiSuccess()
   const { handleApiError } = useApiError()
   const [loading, setLoading] = useState<boolean>(false)

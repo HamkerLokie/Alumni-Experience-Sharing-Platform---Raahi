@@ -31,7 +31,13 @@ const defaultValue: AuthContextProps = {
 const AuthContext = createContext<AuthContextProps>(defaultValue)
 
 export const useAuth = () => {
-  return useContext(AuthContext)
+  const context = useContext(AuthContext)
+
+  if (context === null) {
+    throw new Error('useAuth must be used within an AuthProvider')
+  }
+
+  return context
 }
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
