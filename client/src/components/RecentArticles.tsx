@@ -43,6 +43,7 @@ const RecentArticles = () => {
           description={article.description}
           date={article.createdAt}
           name={article.fullName}
+          showName={article.showName}
         />
       )}
     />

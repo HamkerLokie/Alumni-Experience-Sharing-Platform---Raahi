@@ -1,5 +1,4 @@
 import { FormEvent, Fragment, useEffect, useState } from 'react'
-
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import InputTags from '../ui/InputTags'
 import ArticleEditor from '../components/ArticleEditor'
@@ -9,17 +8,19 @@ import axios from '../axios'
 import useApiSuccess from '../hooks/useApiSuccess'
 import Loader from '../ui/Loader'
 import { FormState } from '../defs/FormType'
+import { useAuth } from '../context/AuthContext'
 
 const WriteArticle = () => {
   const { handleApiError } = useApiError()
   const { handleApiSuccess } = useApiSuccess()
+  const { user } = useAuth()
 
   const [formData, setFormData] = useState<FormState>({
     articleDetails: {
       title: '',
       companyName: '',
-      fullName: '',
-      email: '',
+      fullName: user?.displayName as string,
+      email: user?.email as string,
       showName: true
     },
     errors: {
@@ -42,7 +43,8 @@ const WriteArticle = () => {
     isShowPreSubmit: false,
     feedbackshow: false,
     articleIDForFeedback: '',
-    editorHasText: false
+    editorHasText: false,
+    emailVerified: false
   })
   const [loading, setLoading] = useState<boolean>(false)
 
@@ -71,6 +73,8 @@ const WriteArticle = () => {
       formIsHalfFilledOut: true
     }))
   }
+
+  console.log('article', formData.articleDetails.email)
 
   const handleInputValue =
     (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -136,8 +140,6 @@ const WriteArticle = () => {
           }
         })
       } else {
-        console.log('else')
-
         Swal.fire?.({
           title: 'Please Write Something',
           text: 'Article is Empty',
@@ -214,9 +216,10 @@ const WriteArticle = () => {
               <div className='w-[45%]'>
                 <input
                   type='text'
-                  className='w-full'
                   placeholder='Your Name'
-                  onChange={handleInputValue('fullName')}
+                  readOnly
+                  value={formData.articleDetails.fullName}
+                  className=' w-full font-[600] font-josefin text-green-800 '
                 />
                 <span className='text-red-600 text-sm p-0 -my-5 mb-1'>
                   {formData.errors.name}
@@ -240,9 +243,11 @@ const WriteArticle = () => {
             </div>
             <input
               type='email'
-              placeholder='College/Personal Email'
-              onChange={handleInputValue('email')}
+              value={formData.articleDetails.email as string}
+              readOnly
+              className='font-[600] font-josefin text-green-800 '
             />
+
             <span className='text-red-600 text-sm p-0 -my-5 mb-1'>
               {formData.errors.contact}
             </span>
@@ -256,6 +261,7 @@ const WriteArticle = () => {
         <ArticleEditor handleInputChange={handleEditorInputChange} />
 
         <button
+          disabled={!formData.editorHasText && !formData.emailVerified}
           onClick={handlePreSubmit}
           className='sb-btn bg-pri text-white rounded-full font-bold w-[15%] m-5 self-center p-pad'
         >

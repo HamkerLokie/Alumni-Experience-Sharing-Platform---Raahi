@@ -41,7 +41,7 @@ const InputTags: React.FC<InputTagProps> = ({ tags, setTags }) => {
         onKeyUp={(event: KeyboardEvent<HTMLInputElement>) =>
           event.key === ' ' ? addTags(event) : null
         }
-        placeholder='Press enter to add tags'
+        placeholder='Press space to add tags'
       />
     </div>
   )

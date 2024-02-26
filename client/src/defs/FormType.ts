@@ -29,4 +29,5 @@ export interface FormState {
   feedbackshow: boolean
   articleIDForFeedback: string
   editorHasText: boolean
+  emailVerified: boolean
 }

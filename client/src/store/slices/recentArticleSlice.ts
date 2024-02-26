@@ -1,19 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from '../../axios'
-
-interface Article {
-  _id: string
-  title: string
-  description: string
-  createdAt: Date
-  fullName: string
-}
-
-interface ArticleSlice {
-  loading: boolean
-  data: Article[]
-  error: string | null
-}
+import { ArticleSlice } from '../../defs/ArticleTypes'
 
 const initialState: ArticleSlice = {
   loading: false,
@@ -114,11 +101,9 @@ export const fetchRecentArticle = createAsyncThunk(
   }
 )
 
-
-
 export const fetchCompanyArticle = createAsyncThunk(
   'company_articles',
-  async (companyName:string, { rejectWithValue }) => {
+  async (companyName: string, { rejectWithValue }) => {
     try {
       const response = await axios.get(`/companies/${companyName}`)
       return response.data

@@ -19,10 +19,10 @@ function App () {
       <main className='bg-ter'>
         <Routes>
           {publicRoutes.map(route => (
-            <Route path={route.path} element={route.element} />
+            <Route key={route.path} path={route.path} element={route.element} />
           ))}
           {privateRoutes.map(route => (
-            <Route path={route.path} element={route.element} />
+            <Route key={route.path} path={route.path} element={route.element} />
           ))}
         </Routes>
       </main>
