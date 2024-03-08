@@ -74,8 +74,6 @@ const WriteArticle = () => {
     }))
   }
 
-  console.log('article', formData.articleDetails.email)
-
   const handleInputValue =
     (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       const { articleDetails, errors } = formData
@@ -127,6 +125,7 @@ const WriteArticle = () => {
       }))
     }
 
+
     setFormData(prev => {
       if (prev.isShowPreSubmit && prev.editorHasText) {
         Swal.fire?.({
@@ -153,6 +152,7 @@ const WriteArticle = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    
     const { description, tags } = formData
     const { title, companyName, fullName, showName, email } =
       formData.articleDetails
@@ -164,7 +164,8 @@ const WriteArticle = () => {
       showName,
       description,
       tags,
-      email
+      email,
+      userImage: user?.photoURL
     }
 
     try {
@@ -172,8 +173,6 @@ const WriteArticle = () => {
       const response = await axios.post('/articles/post', payload)
       handleApiSuccess(response.data)
     } catch (error) {
-      console.log(error)
-
       handleApiError(error)
     } finally {
       setLoading(false)

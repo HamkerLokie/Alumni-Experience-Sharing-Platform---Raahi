@@ -7,6 +7,7 @@ import {
   sortByName
 } from '../store/slices/recentArticleSlice'
 import ListComponent from '../ui/HomeLayout'
+import ArticleCardSkeleton from '../ui/Skeletons/ArticleCardSkeleton'
 
 const RecentArticles = () => {
   const dispatch = useAppDispatch()
@@ -25,8 +26,8 @@ const RecentArticles = () => {
   }
 
   const buttons = [
-    { label: 'Sort By Name', onClick: handleName },
-    { label: 'Sort By Date', onClick: handleDate }
+    { label: 'Name', onClick: handleName },
+    { label: 'Date', onClick: handleDate }
   ]
 
   return (
@@ -37,14 +38,23 @@ const RecentArticles = () => {
       error={error}
       buttons={buttons}
       renderItem={article => (
-        <RecentArticleCard
-          id={article._id}
-          title={article.title}
-          description={article.description}
-          date={article.createdAt}
-          name={article.fullName}
-          showName={article.showName}
-        />
+        <>
+          {loading ? (
+            <ArticleCardSkeleton />
+          ) : (
+            <>
+              <RecentArticleCard
+                id={article._id}
+                title={article.title}
+                description={article.description}
+                date={article.createdAt}
+                name={article.fullName}
+                showName={article.showName}
+                userImage={article.userImage}
+              />
+            </>
+          )}
+        </>
       )}
     />
   )

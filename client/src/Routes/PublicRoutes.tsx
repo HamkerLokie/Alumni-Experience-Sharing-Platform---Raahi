@@ -1,6 +1,8 @@
+import { lazy, Suspense } from 'react'
 import Guidelines from '../pages/Guidelines'
-import ArticlesCompany from '../pages/ArticlesCompany'
+const ArticlesCompany = lazy(() => import('../pages/ArticlesCompany'))
 import Homepage from '../pages/Homepage'
+import ArticleCardSkeleton from '../ui/Skeletons/ArticleCardSkeleton'
 
 const publicRoutes = [
   {
@@ -9,7 +11,11 @@ const publicRoutes = [
   },
   {
     path: '/interview/:companyName',
-    element: <ArticlesCompany />
+    element: (
+      <Suspense fallback={<ArticleCardSkeleton />}>
+        <ArticlesCompany />
+      </Suspense>
+    )
   },
   {
     path: '/',

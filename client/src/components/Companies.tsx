@@ -1,26 +1,31 @@
 import CompanyTags from './CompanyTags'
 import { useAppDispatch, useAppSelector } from '../hooks/sliceHooks'
-import { fetchCompanies, sortByCount, sortByCompanyName } from '../store/slices/companySlice'
+import {
+  fetchCompanies,
+  sortByCount,
+  sortByCompanyName
+} from '../store/slices/companySlice'
 import { useEffect } from 'react'
 import ListComponent from '../ui/HomeLayout'
 const Companies = () => {
   const { loading, data, error } = useAppSelector(state => state.comapnies)
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     dispatch(fetchCompanies())
-  }, [])
+  }, [dispatch])
 
   const sortCount = () => {
-    dispatch(sortByCount());
-  };
+    dispatch(sortByCount())
+  }
   const sortName = () => {
-    dispatch(sortByCompanyName());
-  };
+    dispatch(sortByCompanyName())
+  }
 
   const buttons = [
-    { label: 'Sort By Count', onClick: sortCount },
-    { label: 'Sort By Company', onClick: sortName },
-  ];
+    { label: 'Count', onClick: sortCount },
+    { label: 'Company', onClick: sortName }
+  ]
 
   return (
     <>
@@ -29,7 +34,7 @@ const Companies = () => {
         data={data}
         loading={loading}
         error={error}
-        buttons={buttons} 
+        buttons={buttons}
         renderItem={company => (
           <CompanyTags
             count={company.count}

@@ -1,9 +1,8 @@
+// import React, { Suspense } from 'react'
 import Carousel from '../components/Carousel'
 import Companies from '../components/Companies'
 import RecentArticles from '../components/RecentArticles'
-
 import ImageSlider from '../components/ImageSlider'
-
 const Homepage = () => {
   return (
     <>
@@ -13,7 +12,7 @@ const Homepage = () => {
           <Carousel />
           <ImageSlider />
         </div>
-          <RecentArticles />
+        <RecentArticles />
       </div>
     </>
   )

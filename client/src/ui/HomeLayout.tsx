@@ -1,8 +1,8 @@
 import React from 'react'
 import ErrorCard from './ErrorCard'
 import Heading from './Heading'
-import NoDataCard from './NoDataCard'
-import Loader from './Loader'
+import CompanyTagSkeleton from './Skeletons/CompanyTagSkeleton'
+import ArticleCardSkeleton from './Skeletons/ArticleCardSkeleton'
 
 interface ListComponentProps<T> {
   title: string
@@ -15,6 +15,7 @@ interface ListComponentProps<T> {
     onClick: () => void
   }[]
 }
+
 function ListComponent<T> ({
   title,
   data,
@@ -28,9 +29,12 @@ function ListComponent<T> ({
       <Heading heading={title} />
       {buttons && (
         <div className='w-full btn-wrap'>
+          <span className='rounded-sm py-1 font-josefin text-sm '>
+            Sort by:{' '}
+          </span>
           {buttons.map(button => (
             <button
-              className='sort-btn bg-pri rounded px-2 font-josefin text-md shadow-xl mt-0 text-white m-1'
+              className='sort-btn bg-pri rounded-sm px-3 py-1 font-josefin text-sm shadow-xl mt-0 text-white m-1'
               key={button.label}
               onClick={button.onClick}
             >
@@ -39,16 +43,25 @@ function ListComponent<T> ({
           ))}
         </div>
       )}
-      {loading && <Loader />}
       {error && <ErrorCard error={error} />}
-      {data.length === 0 && !error && (
-        <NoDataCard message={`Zero ${title} Found`} />
-      )}
       <div className='node-render overflow-x-hidden min-h-[40vh] max-h-[90vh] w-full '>
-        {!loading &&
+        {loading ? (
+          <>
+            {title === 'Companies List' ? (
+              <>
+                <CompanyTagSkeleton />
+              </>
+            ) : (
+              <>
+                <ArticleCardSkeleton />
+              </>
+            )}
+          </>
+        ) : (
           data.map((item, index) => (
             <React.Fragment key={index}>{renderItem(item)}</React.Fragment>
-          ))}
+          ))
+        )}
       </div>
     </div>
   )

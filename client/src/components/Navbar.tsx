@@ -10,26 +10,28 @@ const Navbar = () => {
     navigate(`/article/${action}`)
   }
   return (
-    <nav className='navbar flex flex-wrap justify-between items-center p-pad min-h-[10vh] '>
-      <div className='w-2/5 '>
+    <nav className='m-auto navbar w-[60%] rounded-full flex flex-wrap justify-between items-center px-3 py-[.2em] border-2  border-gray'>
+      <div className='nav-img w-2/5 '>
         <Link to={'/'}>
-          <img src={logo} alt='' className=' homelogo w-[32%] logo' />
+          <img src={logo} alt='' className=' homelogo w-[35%] logo' />
         </Link>
       </div>
-      <div className='nav-btn-wrapper w-[24%] flex items-center justify-between   '>
+      <div className='nav-btn-wrapper w-[35%] flex items-center justify-between   '>
         <Button
           text='Write Article'
-          classes='bg-pri text-white px-3 text-lg shadow-xl md:text-sm '
+          classes='bg-pri text-white px-3 text-md shadow-xl md:text-md '
           handleFunction={() => handleButton('write')}
         />
         <Button
           text='Request Article'
-          classes='bg-light text-black px-3 text-lg shadow-xl'
+          classes='bg-light text-black px-3 text-md shadow-xl md:text-md'
           handleFunction={() => handleButton('request')}
         />
-        <Button
-          text={<FontAwesomeIcon icon={faQuestionCircle} size='2xl' />}
-          handleFunction={() => handleButton('guidelines')}
+        <FontAwesomeIcon
+          onClick={() => handleButton('guidelines')}
+          className='bg-pri shadow-xl rounded-full text-white'
+          icon={faQuestionCircle}
+          size='2xl'
         />
       </div>
     </nav>

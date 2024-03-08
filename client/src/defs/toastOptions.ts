@@ -1,19 +1,21 @@
 interface CustomToastOptions {
-    success: {
-      theme: {
-        primary: string
-      }
-      style: {
-        background: string
-        color: string
-      }
-      iconTheme: {
-        primary: string
-        secondary: string
-      }
+  success: {
+    theme: {
+      primary: string
     }
+    style: {
+      background: string
+      color: string
+    }
+    iconTheme: {
+      primary: string
+      secondary: string
+    }
+    duration: number
   }
-  
+ 
+}
+
 const toastOptions: CustomToastOptions = {
   success: {
     theme: {
@@ -26,10 +28,10 @@ const toastOptions: CustomToastOptions = {
     iconTheme: {
       primary: '#d3eafa',
       secondary: 'black'
-    }
-  }
-  
+    },
+    duration: 3000
+  },
+ 
 }
-
 
 export default toastOptions

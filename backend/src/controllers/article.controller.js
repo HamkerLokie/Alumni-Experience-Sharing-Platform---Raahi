@@ -6,8 +6,16 @@ import { ApiError } from "../utils/ApiError.js";
 import { mailReceived } from "./mail.controller.js";
 
 const postArticle = asyncHandler(async (req, res) => {
-  const { title, companyName, fullName, showName, description, tags, email } =
-    req.body;
+  const {
+    title,
+    companyName,
+    fullName,
+    showName,
+    description,
+    tags,
+    email,
+    userImage,
+  } = req.body;
 
   const response = await axios.get(
     `https://autocomplete.clearbit.com/v1/companies/suggest?query=${companyName}`
@@ -30,14 +38,14 @@ const postArticle = asyncHandler(async (req, res) => {
     description,
     tags,
     email,
+    userImage,
   });
 
   // Verification
-  try {
-    const res = await mailReceived(email, fullName, title); 
-    console.log('mail', res);
-  } catch (error) {
-    console.error("Error sending verification email", error);
+  const mailResponse = await mailReceived(email, fullName, title);
+
+  if (!mailResponse) {
+    throw new ApiError(500, "Error sending verification email");
   }
 
   return res
@@ -49,10 +57,9 @@ const getAllArticles = asyncHandler(async (req, res) => {
   const articles = await Article.find({ isVerified: true })
     .sort({ _id: -1 })
     .limit(10);
-
-  return res
-    .status(200)
-    .json(new ApiResponse(200, articles, "All Articles Fetched"));
+    return res
+      .status(200)
+      .json(new ApiResponse(200, articles, "All Articles Fetched"));
 });
 
 const getSingleArticle = asyncHandler(async (req, res) => {
@@ -64,10 +71,9 @@ const getSingleArticle = asyncHandler(async (req, res) => {
   if (article.length === 0) {
     throw new ApiError(400, `No article with found !!`);
   }
-
-  return res
-    .status(200)
-    .json(new ApiResponse(200, article, "Read Full Article!!"));
+    return res
+      .status(200)
+      .json(new ApiResponse(200, article, "Read Full Article!!"));
 });
 
 const getArticleByTags = asyncHandler(async (req, res) => {

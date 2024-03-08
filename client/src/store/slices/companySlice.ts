@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from '../../axios'
 import { CompanySlice } from '../../defs/CompanyTypes'
 
-
 const initialState: CompanySlice = {
   loading: false,
   data: [],

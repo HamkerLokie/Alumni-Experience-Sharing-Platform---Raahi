@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import useApiError from '../hooks/useApiError'
 import useApiSuccess from '../hooks/useApiSuccess'
 import axios from '../axios'
-import Loader from '../ui/Loader'
 import parse from 'html-react-parser'
+import ReadArticleSkeleton from '../ui/Skeletons/ReadArticleSkeleton'
 
 interface ArticleData {
   email: string
@@ -16,6 +16,7 @@ interface ArticleData {
   tags: string[]
   title: string
   _id: string
+  userImage: string
 }
 
 const ReadArticle = () => {
@@ -38,7 +39,7 @@ const ReadArticle = () => {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, [articleId])
 
   useEffect(() => {
     fetchArticle()
@@ -60,15 +61,23 @@ const ReadArticle = () => {
     )
   }
 
-
   return (
     <div className=' w-full flex justify-center p-5 items-center'>
       {loading ? (
-        <Loader />
+        <ReadArticleSkeleton />
       ) : (
-        <div className='read-art bg-light p-5 m-auto w-[70%]'>
-          <h2 className='font-[600]  text-2xl italic font-josefin  text-blue-gray-800'>
-            {articleData?.title}
+        <div className='read-art bg-light mt-3 shadow-xl p-5 m-auto w-[70%]'>
+          <h2 className='font-[600] relative flex justify-between text-2xl italic font-josefin  text-blue-gray-800'>
+            {articleData?.title}{' '}
+            {articleData?.userImage && (
+              <div className='rounded-full -top-10 -right-10 shadow-xl border-4 border-solid border-pri p-1 max-h-[3em] max-w-[3em] absolute'>
+                <img
+                  className='rounded-full'
+                  src={articleData.userImage}
+                  alt=''
+                />
+              </div>
+            )}
           </h2>
           <div className='font-prompt text-sm'>
             &nbsp;by{' '}

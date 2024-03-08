@@ -7,7 +7,8 @@ interface RecentArticleProps {
   description: string
   name: string
   date: Date
-  showName:boolean
+  showName: boolean
+  userImage: string
 }
 
 const RecentArticleCard: React.FC<RecentArticleProps> = ({
@@ -39,7 +40,9 @@ const RecentArticleCard: React.FC<RecentArticleProps> = ({
           <span className='title font-josefin'>{title}</span>
           <span className='summary '>{replaceHTMLTags(description)}</span>
           <div className='flex mt-1'>
-            <span className='name font-[500]'>by  {showName ? name : 'Cuian'}</span>
+            <span className='name font-[500]'>
+              by {showName ? name : 'Cuian'}
+            </span>
 
             <span className='time'> {parseDate(date)}</span>
           </div>

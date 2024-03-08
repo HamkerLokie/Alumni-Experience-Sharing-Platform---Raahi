@@ -5,6 +5,7 @@ interface Article {
   createdAt: Date
   fullName: string
   showName:boolean
+  userImage:string
 }
 
 export interface ArticleSlice {

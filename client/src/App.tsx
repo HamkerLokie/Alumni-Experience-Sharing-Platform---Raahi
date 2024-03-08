@@ -14,7 +14,10 @@ function App () {
   return (
     <>
       <Toaster position='top-center' toastOptions={toastOptions}></Toaster>
-      <Navbar />
+
+      <header className='mb-5 pt-[10px]'>
+        <Navbar />
+      </header>
 
       <main className='bg-ter'>
         <Routes>

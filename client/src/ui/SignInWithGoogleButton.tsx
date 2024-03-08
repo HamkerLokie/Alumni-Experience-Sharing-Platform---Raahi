@@ -24,7 +24,7 @@ const SignInWithGoogleButton: FC<GoogleButtonProps> = ({ title }) => {
 
   return (
     <button
-      className='flex w-full items-center justify-between rounded-full font-julius border-2 border-amber-500 bg-black px-3 py-3 text-[0.6rem] font-bold uppercase tracking-wider text-white transition-all duration-300 ease-in-out hover:bg-gray-200 dark:bg-black dark:text-white dark:hover:bg-white shadow-lg'
+      className='flex w-full items-center justify-between rounded-full font-julius border-2 border-amber-500 bg-black px-3 py-3 text-[0.6rem] font-bold uppercase tracking-wider text-white transition-all duration-300 ease-in-out hover:bg-white hover:text-black dark:bg-black dark:text-black dark:hover:bg-white shadow-lg'
       type='button'
       onClick={handleSubmit}
     >
